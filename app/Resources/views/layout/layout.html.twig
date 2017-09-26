@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>
+            {% block title %}
+            - Deporte para Todos
+            {% endblock %}
+        </title>
+        {% block stylesheets %}
+            {# Incluir estilos CSS #}
+            <link href="{{ asset('assets/bootstrap/css/bootstrap.css') }}" type="text/css" rel="stylesheet"/>
+            <link href="{{ asset('assets/css/bootstrap.cosmo.min.css') }}" type="text/css" rel="stylesheet"/>
+            <link href="{{ asset('assets/css/styles.css') }}" type="text/css" rel="stylesheet"/>
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="{{ path("app_homepage") }}">
+                            <span class="glyphicon glyphicon-cloud"></span>
+                            Social Network
+                        </a>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="{{ path("app_homepage") }}">
+                                <span class="glyphicon glyphicon-home"></span>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path("user_list") }}">Gente</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if app.user != null %}
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <div class="avatar">
+                                        {% if app.user.image == null %}
+                                        <img src="{{ asset('images/default.png/') }}" />
+                                        {% else %}
+                                            <img src="{{ asset('uploads/users/'~app.user.image) }}" />
+                                        {% endif %}
+                                    </div>
+                                    {{ app.user.name }} {{ app.user.surname }}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{ path("user_edit") }}">
+                                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                                            Mi Perfil
+                                        </a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li>
+                                        <a>
+                                            <span class="glyphicon glyphicon-question-sign"></span>
+                                            Ayuda
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path("logout") }}">
+                                            <span class="glyphicon glyphicon-log-out"></span>
+                                            Salir
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="{{ path("login") }}">
+                                    <span class="glyphicon glyphicon-log-in"></span>
+                                    &nbsp;
+                                    <span>Login</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path("register") }}">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    &nbsp;
+                                    <span>Registro</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <section id="content">
+            <div class="container">
+                <div class="col-lg-11">
+                    {% for message in app.session.flashbag().get('status') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            {% block content %}
+            {% endblock %}
+        </section>
+        <footer>
+            {% block footer %}
+                <div class="container">
+                    <p class="text-muted">Social Network</p>
+                </div>
+            {% endblock %}
+        </footer>
+        {% block javascripts %}
+            <script type="text/javascript">
+                var URL = "{{ app.request.getSchemeAndHttpHost() }}";
+            </script>
+            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+            <script src="{{ asset('assets/bootstrap/js/bootstrap.js') }}"></script>
+        {% endblock %}
+    </body>
+
+</html>

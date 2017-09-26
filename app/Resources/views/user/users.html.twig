@@ -1,0 +1,29 @@
+{% extends 'layout/layout.html.twig' %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/custom/nick-test.js') }}"></script>
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 box-form">
+              <h1>Gente</h1>
+              <div class="count">
+                <span>
+                  Total de Usuarios Registrados
+                </span>
+                <span class="label label-primary">
+                  {{ pagination.getTotalItemCount() }}
+                </span>
+              </div>
+              <div class="box-content box-users">
+                {% for user in pagination %}
+                  <span>Nombre : {{ user.name }}
+                  <span>Email: {{ user.email }}
+                  <br>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
