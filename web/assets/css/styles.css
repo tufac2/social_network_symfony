@@ -9,6 +9,14 @@ body{
     overflow: hidden;
 }
 
+.box-default{
+    background-color: white;
+    border-radius: 3px;
+    margin: 0 auto;
+    padding: 0px 20px 20px 20px;
+    overflow: hidden;
+}
+
 /* HEADER */
 
 .avatar{
@@ -29,4 +37,25 @@ body{
 
 .box-form input {
     margin-bottom: 10px;
+}
+
+/* GENTE */
+
+.user-item .avatar{
+    background: #eee;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    float: left;
+}
+
+.user-item .avatar .img{
+    height: 100%;
+    text-align: center;
+}
+
+.user-item .user-item-content{
+    padding: 10px;
+    margin-left: 86px;
 }
