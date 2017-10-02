@@ -10,4 +10,4 @@ BackendBundle\Entity\User:
             - NotBlank: {message: "Los apellidos no pueden estar vacíos"}
             - Email:
                 message: El email "{{value}}" no es válido.
-                checkMX: true
+                checkMX: false
