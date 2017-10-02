@@ -78,5 +78,5 @@ knp_paginator:
         sort_direction_name: direction
         distinct: true
     template:
-        pagination: layout:custom_pagination.html.twig
+        pagination: layout\custom_pagination.html.twig
         sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig
