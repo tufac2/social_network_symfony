@@ -1,7 +1,7 @@
 {% extends 'layout/layout.html.twig' %}
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('assets/js/custom/nick-test.js') }}"></script>
+    {# <script src="{{ asset('assets/js/custom/users.js') }}"></script> #}
 {% endblock %}
 {% block content %}
     <div class="container">
@@ -35,7 +35,7 @@
                   <hr>
                 {% endfor %}
               </div>
-              <div class="navigation">
+              <div class="pagination">
                 {{ knp_pagination_render(pagination) }}
               </div>
             </div>
