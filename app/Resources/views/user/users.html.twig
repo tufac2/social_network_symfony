@@ -30,6 +30,12 @@
                       <p> {{user.name}} {{user.surname}}</p>
                       <p> {{user.bio}} </p>
                     </div>
+                    {% if app.user.id != user.id %}
+                      <div class="pull-right buttons-following">
+                        <button class="btb btn-success btn-follow" data-followed="{{user.id}}">Seguir</button>
+                        <button class="btb btn-danger btn-unfollow" data-followed="{{user.id}}">Dejar de Seguir</button>
+                      </div>
+                    {% endif %}
                   </div>
                   <div class="clearfix"></div>
                   <hr>
