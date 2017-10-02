@@ -35,6 +35,16 @@
                         <li>
                             <a href="{{ path("user_list") }}">Gente</a>
                         </li>
+                        <li>
+                            <form action="{{ path('user_search')}}" class="navbar-form navbar-left">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Buscar" name="search" />
+                                </div>
+                                <button type="submit" class="btn btn-search btn-default">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </buton>
+                            </form>
+                        </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% if app.user != null %}
